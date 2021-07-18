@@ -101,7 +101,7 @@ a {
     width: auto;
     float: none;
     margin-bottom: 10px;
-    padding-top: 20px;
+    padding-top: 15px;
     font-weight: 700;
     font-size: 20px;
     line-height: 150%;
@@ -127,8 +127,6 @@ a {
     color: #757575;
 }
 .sub-news-top {
-    margin-top: 20px;
-    padding-top: 15px;
     width: 100%;
     padding-left: 0;
     height: auto;

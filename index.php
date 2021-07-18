@@ -1,5 +1,7 @@
 <?php
 require_once('lib/db_connection.php');
+require_once('lib/home.php');
+
 if (isset($_GET['p'])) {
     $p = $_GET['p'];
 } else {
