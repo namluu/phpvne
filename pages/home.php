@@ -12,26 +12,22 @@
 <section class="section_stream_home">
     <div class="container flexbox has_border">
         <div class="col-left">
-            <article class="item-news">
-                <h3 class="title_news"><a href="">Chiến dịch tiêm vaccine Covid-19 toàn dân bắt đầu</a></h3>
-                <p class="description"><a href="">Để chủ động ứng phó tình huống xấu nhất, TP HCM có kế hoạch chuẩn bị 50.000 giường điều trị Covid-19 theo yêu cầu của Ban chỉ đạo chống Covid-19 quốc gia.</a></p>
+            <?php
+            $posts = get_most_view_posts();
+            while ($row = mysqli_fetch_array($posts)) : 
+                $link = 'index.php?p=post&id='.$row['id'];
+            ?>
+            <article class="item-news item-news-common">
+                <h3 class="title-news"><a href=""><?= $row['title'] ?></a></h3>
+                <div class="thumb-art">
+                    <a href="" class="" title="">
+                    <picture>
+                        <img alt="" class="g" src="upload/<?= $row['image'] ?>">
+                    </picture> </a>
+                </div>
+                <p class="description"><a href=""><?= $row['description'] ?></a></p>
             </article>
-            <article class="item-news">
-                <h3 class="title_news"><a href="">Chiến dịch tiêm vaccine Covid-19 toàn dân bắt đầu</a></h3>
-                <p class="description"><a href="">Để chủ động ứng phó tình huống xấu nhất, TP HCM có kế hoạch chuẩn bị 50.000 giường điều trị Covid-19 theo yêu cầu của Ban chỉ đạo chống Covid-19 quốc gia.</a></p>
-            </article>
-            <article class="item-news">
-                <h3 class="title_news"><a href="">Chiến dịch tiêm vaccine Covid-19 toàn dân bắt đầu</a></h3>
-                <p class="description"><a href="">Để chủ động ứng phó tình huống xấu nhất, TP HCM có kế hoạch chuẩn bị 50.000 giường điều trị Covid-19 theo yêu cầu của Ban chỉ đạo chống Covid-19 quốc gia.</a></p>
-            </article>
-            <article class="item-news">
-                <h3 class="title_news"><a href="">Chiến dịch tiêm vaccine Covid-19 toàn dân bắt đầu</a></h3>
-                <p class="description"><a href="">Để chủ động ứng phó tình huống xấu nhất, TP HCM có kế hoạch chuẩn bị 50.000 giường điều trị Covid-19 theo yêu cầu của Ban chỉ đạo chống Covid-19 quốc gia.</a></p>
-            </article>
-            <article class="item-news">
-                <h3 class="title_news"><a href="">Chiến dịch tiêm vaccine Covid-19 toàn dân bắt đầu</a></h3>
-                <p class="description"><a href="">Để chủ động ứng phó tình huống xấu nhất, TP HCM có kế hoạch chuẩn bị 50.000 giường điều trị Covid-19 theo yêu cầu của Ban chỉ đạo chống Covid-19 quốc gia.</a></p>
-            </article>
+            <?php endwhile; ?>
         </div>
         <div class="col-right">
             <div class="box-category">

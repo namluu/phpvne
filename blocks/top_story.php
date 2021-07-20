@@ -1,7 +1,7 @@
 <article class="article-topstory">
     <?php 
     $post = get_latest_post_one();
-    $row = mysqli_fetch_array($post, MYSQLI_ASSOC);
+    $row = mysqli_fetch_array($post);
     if ($row): 
         $link = 'index.php?p=post&id='.$row['id'];
     ?>
@@ -19,7 +19,7 @@
     <ul class="list-sub-feature">
         <?php
         $posts = get_latest_post_three();
-        while ($row = mysqli_fetch_array($posts, MYSQLI_ASSOC)) : 
+        while ($row = mysqli_fetch_array($posts)) : 
             $link = 'index.php?p=post&id='.$row['id'];
         ?>
         <li>
