@@ -1,3 +1,7 @@
+<?php
+$postShowed = []; // we make sure only show a post one time
+?>
+
 <section class="section_topstory">
     <div class="container flexbox">
         <div class="col-left-top">
@@ -16,6 +20,7 @@
             $posts = get_most_view_posts();
             while ($row = mysqli_fetch_array($posts)) : 
                 $link = 'index.php?p=post&id='.$row['id'];
+                $postShowed[] = $row['id'];
             ?>
             <article class="item-news item-news-common">
                 <h3 class="title-news"><a href=""><?= $row['title'] ?></a></h3>
@@ -49,23 +54,23 @@
                 <div class="content-box-category">
                     <?php 
                     $post = get_latest_post_by_section($row['id']);
-                    $row = mysqli_fetch_array($post);
-                    if ($row): 
-                        $link = 'index.php?p=post&id='.$row['id'];
+                    $first = mysqli_fetch_array($post);
+                    if ($first): 
+                        $link = 'index.php?p=post&id='.$first['id'];
                     ?>
                     <article class="item-news full-thumb flexbox">
                         <div class="thumb-art">
-                            <a href="" title="<?= $row['title'] ?>">
+                            <a href="" title="<?= $first['title'] ?>">
                                 <picture>
-                                    <img alt="<?= $row['title'] ?>" src="upload/<?= $row['image'] ?>">
+                                    <img alt="<?= $first['title'] ?>" src="upload/<?= $first['image'] ?>">
                                 </picture>
                             </a>
                         </div>
                         <div class="wrap-sum-news">
-                            <h3 class="title-news"><a href="" title="<?= $row['title'] ?>"><?= $row['title'] ?></a></h3>
+                            <h3 class="title-news"><a href="" title="<?= $first['title'] ?>"><?= $first['title'] ?></a></h3>
                             <p class="description">
-                                <a href="" title="<?= $row['title'] ?>">
-                                    <?= $row['description'] ?>
+                                <a href="" title="<?= $first['title'] ?>">
+                                    <?= $first['description'] ?>
                                 </a>
                                 <span class="meta-news">
                                     <a class="count_cmt" href="" style="white-space: nowrap; display: none;">
@@ -77,48 +82,37 @@
                         </div>
                     </article>
                     <?php endif; ?>
+                    <?php 
+                    $post = get_second_post_by_section($row['id']);
+                    $second = mysqli_fetch_array($post);
+                    if ($second): 
+                        $link = 'index.php?p=post&id='.$second['id'];
+                    ?>
                     <article class="article-sub-right">
-                        <h3 class="title-news"><a href="https://vnexpress.net/chung-khoan-tang-manh-4328905.html" data-itm-source="#vn_source=Home&amp;vn_campaign=Box-KinhDoanh&amp;vn_medium=Item-2&amp;vn_term=Desktop&amp;vn_thumb=0" data-itm-added="1">Chứng khoán tăng mạnh</a></h3>
+                        <h3 class="title-news"><a href=""><?= $second['title'] ?></a></h3>
                         <p class="description">
-                            <a href="https://vnexpress.net/chung-khoan-tang-manh-4328905.html" data-itm-source="#vn_source=Home&amp;vn_campaign=Box-KinhDoanh&amp;vn_medium=Item-2&amp;vn_term=Desktop&amp;vn_thumb=0" title="Chứng khoán tăng mạnh" data-itm-added="1">
-                                Sau khi đảo chiều từ giảm thành tăng vào đầu phiên, VN-Index duy trì sắc xanh đến lúc đóng cửa và tích luỹ thêm 22,88 điểm so với tham chiếu.
+                            <a href="" title="<?= $second['title'] ?>" data-itm-added="1">
+                                <?= $second['description'] ?>
                             </a>
                             <span class="meta-news">
-                                <a class="count_cmt" href="https://vnexpress.net/chung-khoan-tang-manh-4328905.html#box_comment_vne" style="white-space: nowrap; display: none;">
+                                <a class="count_cmt" href="" style="white-space: nowrap; display: none;">
                                     <svg class="ic ic-comment"><use xlink:href="#Comment-Reg"></use></svg>
                                     <span class="font_icon widget-comment-4328905-1">2</span>
                                 </a>
                             </span>
                         </p>
                     </article>
+                    <?php endif; ?>
                     <div class="sub-news-cate flexbox">
+                    <?php
+                        $posts = get_three_post_by_section($row['id']);
+                        while ($row = mysqli_fetch_array($posts)) : 
+                            $link = 'index.php?p=post&id='.$row['id'];
+                        ?>
                         <article class="item-news">
-                            <h3 class="title-news"><a href="https://vnexpress.net/uy-ban-kinh-te-lo-ngai-bong-bong-tai-san-4328612.html" data-itm-source="#vn_source=Home&amp;vn_campaign=Box-KinhDoanh&amp;vn_medium=Item-3&amp;vn_term=Desktop&amp;vn_thumb=0" title="Uỷ ban Kinh tế: Lo ngại bong bóng tài sản" data-itm-added="1">Uỷ ban Kinh tế: Lo ngại bong bóng tài sản</a><span class="meta-news">
-                                <a class="count_cmt" href="https://vnexpress.net/uy-ban-kinh-te-lo-ngai-bong-bong-tai-san-4328612.html#box_comment_vne" style="white-space: nowrap; display: none;">
-                                <svg class="ic ic-comment"><use xlink:href="#Comment-Reg"></use></svg>
-                                <span class="font_icon widget-comment-4328612-1"></span>
-                                </a>
-                                </span>
-                            </h3>
+                            <h3 class="title-news"><a href="" title="<?= $row['title'] ?>"><?= $row['title'] ?></a></h3>
                         </article>
-                        <article class="item-news">
-                            <h3 class="title-news"><a href="https://vnexpress.net/tp-hcm-hien-co-800-diem-ban-hang-luu-dong-4329039.html" data-itm-source="#vn_source=Home&amp;vn_campaign=Box-KinhDoanh&amp;vn_medium=Item-4&amp;vn_term=Desktop&amp;vn_thumb=0" title="TP HCM hiện có 800 điểm bán hàng lưu động" data-itm-added="1">TP HCM hiện có 800 điểm bán hàng lưu động</a><span class="meta-news">
-                                <a class="count_cmt" href="https://vnexpress.net/tp-hcm-hien-co-800-diem-ban-hang-luu-dong-4329039.html#box_comment_vne" style="white-space: nowrap; display: none;">
-                                <svg class="ic ic-comment"><use xlink:href="#Comment-Reg"></use></svg>
-                                <span class="font_icon widget-comment-4329039-1"></span>
-                                </a>
-                                </span>
-                            </h3>
-                        </article>
-                        <article class="item-news">
-                            <h3 class="title-news"><a href="https://vnexpress.net/digiworld-lai-dam-4328786.html" data-itm-source="#vn_source=Home&amp;vn_campaign=Box-KinhDoanh&amp;vn_medium=Item-5&amp;vn_term=Desktop&amp;vn_thumb=0" title="Digiworld lãi đậm" data-itm-added="1">Digiworld lãi đậm</a><span class="meta-news">
-                                <a class="count_cmt" href="https://vnexpress.net/digiworld-lai-dam-4328786.html#box_comment_vne" style="white-space: nowrap; display: none;">
-                                <svg class="ic ic-comment"><use xlink:href="#Comment-Reg"></use></svg>
-                                <span class="font_icon widget-comment-4328786-1"></span>
-                                </a>
-                                </span>
-                            </h3>
-                        </article>
+                        <?php endwhile; ?>
                     </div>
                 </div>
             </div>
