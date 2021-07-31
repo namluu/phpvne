@@ -16,6 +16,7 @@ if (isset($_GET['p'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/ddsmoothmenu.css" />
 </head>
 <body>
     <header class="top-header">
@@ -28,6 +29,7 @@ if (isset($_GET['p'])) {
 
     <?php
     switch ($p) {
+        case 'section': require_once('pages/section.php'); break;
         case 'category': require_once('pages/category.php'); break;
         case 'post': require_once('pages/post.php'); break;
         default: require_once('pages/home.php');
@@ -37,6 +39,9 @@ if (isset($_GET['p'])) {
     <?php require_once('blocks/box_business.php'); ?>
 
     <?php require_once('blocks/footer.php'); ?>
-    
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script type="text/javascript" src="js/ddsmoothmenu.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
