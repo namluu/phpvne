@@ -56,6 +56,15 @@ function get_categories_by_section($section_id)
     return mysqli_query($connect, $query);
 }
 
+function get_categories()
+{
+    global $connect;
+    $query = "
+        SELECT * FROM category
+    ";
+    return mysqli_query($connect, $query);
+}
+
 function get_latest_post_by_section($section_id)
 {
     global $connect;

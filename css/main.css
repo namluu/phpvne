@@ -202,10 +202,6 @@ a {
     margin: 40px 0 40px 0;
     background: #F7F7F7;
     position: relative;
-    top: -20px;
-    left: -15px;
-    right: -15px;
-    bottom: -20px;
     border: 1px solid #e5e5e5;
     z-index: 0;
     padding: 15px;
@@ -339,4 +335,34 @@ a {
     position: absolute;
     top: 15px;
     left: 0;
+}
+.inner-footer {
+    border-top: 5px solid #E5E5E5;
+    padding: 20px 0;
+    font-size: 14px;
+}
+.inner-footer a {
+    display: inline-block;
+    width: 180px;
+    padding-right: 30px;
+    font-size: 14px;
+    position: relative;
+    margin-bottom: 15px;
+}
+.social {
+    color: #757575;
+    font-size: 14px;
+    line-height: 120%;
+    padding: 10px 0;
+    border-top: 1px solid #E0E0E0;
+}
+.copyright {
+    display: flex;
+    margin: 10px 0 20px;
+}
+.copyright p {
+    width: 33%;
+    padding-right: 30px;
+    font-size: 14px;
+    line-height: 20px;
 }
