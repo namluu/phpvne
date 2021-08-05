@@ -1,12 +1,17 @@
 <?php
+session_start();
 require_once('lib/db_connection.php');
 require_once('lib/home.php');
+require_once('lib/user.php');
 
 if (isset($_GET['p'])) {
     $p = $_GET['p'];
 } else {
     $p = '';
 }
+
+user_handle();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +26,15 @@ if (isset($_GET['p'])) {
 <body>
     <header class="top-header">
         <div class="container">
-            <h1><a href=""><img src="images/logo.svg" alt="VnExpress - Bao tieng Viet nhieu nguoi xem nhat"></a></h1>
+            <h1 class="logo"><a href=""><img src="images/logo.svg" alt="VnExpress - Bao tieng Viet nhieu nguoi xem nhat"></a></h1>
+            <div class="right">
+                <?php
+                if (isset($_SESSION['userId']))
+                    require_once('blocks/form_hello.php');
+                else
+                    require_once('blocks/form_login.php');
+                ?>
+            </div>
         </div>
     </header>
 

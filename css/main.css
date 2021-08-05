@@ -366,3 +366,102 @@ a {
     font-size: 14px;
     line-height: 20px;
 }
+
+.logo {
+    display: inline-block;
+    float: left;
+    padding-top: 2px;
+}
+
+.right {
+    float: right;
+}
+.myvne_taskbar a {
+    height: 32px;
+    line-height: 32px;
+    color: #4f4f4f;
+}
+.ic {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    fill: #bdbdbd;
+    margin-right: 5px;
+    margin-top: -2px;
+}
+.ic-home {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #e5e5e5;
+    justify-content: center;
+    position: relative;
+    bottom: 2px;
+    transition-duration: 300ms;
+    transition-property: all;
+}
+.ic-home .ic {
+    margin: 0;
+    position: relative;
+    top: 2px;
+    left: 4px;
+    fill: #757575;
+}
+.main-nav a:hover .ic-home {
+    background: #b52759;
+}
+.main-nav a:hover .ic-home .ic {
+    fill: #fff;
+}
+
+
+/**======================  LOGIN  =============================**/
+.myvne_taskbar {
+    position: relative;
+}
+.form-popup {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+}
+.form-container {
+    width: 400px;
+    padding: 10px;
+    background-color: white;
+}
+.form-container h1 {
+    color: #9F224E;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 17px 0;
+    text-align: center;
+}
+.form-container input[type=text], .form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+.form-container .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+.form-container .cancel {
+    background-color: red;
+}
+.form_logout
+{
+    display: inline;
+}
