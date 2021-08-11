@@ -1,0 +1,23 @@
+table {
+    width: 1200px;
+    border: 0;
+    margin: 0 auto;
+}
+.title {
+    background: dodgerblue;
+    font-size: 24px;
+    padding: 10px;
+    color: white;
+}
+.menu a {
+    width: 150px;
+    padding: 10px;
+    background: dodgerblue;
+    color: white;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+}
+.menu a:hover {
+    background: #3c3cdb;
+}
