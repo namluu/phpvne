@@ -1,3 +1,16 @@
+<?php
+ob_start();
+session_start();
+if (isset($_POST['btnLogout'])) {
+    unset($_SESSION['userId']);
+    unset($_SESSION['username']);
+    unset($_SESSION['name']);
+    unset($_SESSION['group']);
+}
+if (!isset($_SESSION['userId']) || $_SESSION['group'] != 1) {
+    header('location:../index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +24,15 @@
 
 <table>
     <tr>
-        <td class="title">MANAGEMENT</td>
+        <td class="title">
+            <div>MANAGEMENT</div>
+            <div class="user-panel">
+                Hello <?= $_SESSION['name'] ?>
+                <form action="" method="post" class="form_logout">
+                    <button type="submit" name="btnLogout">Logout</button>
+                </form>
+            </div>
+        </td>
     </tr>
     <tr>
         <td class="menu"><?php require_once 'menu.php'?></td>

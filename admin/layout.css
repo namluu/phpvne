@@ -8,6 +8,7 @@ table {
     font-size: 24px;
     padding: 10px;
     color: white;
+    position: relative;
 }
 .menu a {
     width: 150px;
@@ -20,4 +21,13 @@ table {
 }
 .menu a:hover {
     background: #3c3cdb;
+}
+.user-panel {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 16px;
+}
+.user-panel form {
+    display: inline-block;
 }
