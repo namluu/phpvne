@@ -3,6 +3,10 @@ table {
     border: 0;
     margin: 0 auto;
 }
+.tb-content, .tb-content th, .tb-content td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
 .title {
     background: dodgerblue;
     font-size: 24px;
