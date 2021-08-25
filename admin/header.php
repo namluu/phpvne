@@ -34,10 +34,10 @@ admin_handle();
     <tr>
         <td class="menu">
             <a href="./">Home</a>
-            <a href="./list-section.php">Section</a>
-            <a href="./list-category.php">Category</a>
-            <a href="./list-post.php">Post</a>
-            <a href="./list-banner.php">Banner</a>
+            <a href="./section-list.php">Section</a>
+            <a href="./category-list.php">Category</a>
+            <a href="./post.php-list">Post</a>
+            <a href="./banner-list.php">Banner</a>
         </td>
     </tr>
     <tr>

@@ -1,7 +1,7 @@
 <?php require_once('header.php'); ?>
 
 <h1>Danh sách thể loại</h1>
-<a href="">Add new</a>
+<a href="./section-add.php">Add new</a>
 <table class="tb-content">
     <tr>
         <th>ID</th>
@@ -22,7 +22,7 @@
         <td>{slug}</td>
         <td>{sort_order}</td>
         <td>{is_active}</td>
-        <td><a href="edit-section.php?id={id}">Edit</a> | <a href="delete-section.php?id={id}">Delete</a></td>
+        <td><a href="section-edit.php?id={id}">Edit</a> | <a href="section-delete.php?id={id}">Delete</a></td>
     </tr>
     <?php
         $s = ob_get_clean();

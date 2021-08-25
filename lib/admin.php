@@ -12,6 +12,38 @@ function admin_handle()
     }
 }
 
+function validate_section_form()
+{
+    $errors = [];
+    if (!$_POST['title']) {
+        $errors[] = 'Title is required';
+    }
+    return $errors;
+}
+
+function prepare_section_data()
+{
+    $sortOrder = (int)$_POST['sort_order'];
+    if (!$sortOrder) {
+        $sortOrder = 0;
+    }
+
+    $active = (int)$_POST['is_active'];
+    if (!$active && $active != 0) {
+        $active = 1;
+    }
+
+    $title = $_POST['title'];
+    $slug = renderSlug($title);
+
+    return [
+        'title' => $title,
+        'slug' => $slug,
+        'sort_order' => $sortOrder,
+        'is_active' => $active
+    ];
+}
+
 function get_sections()
 {
     global $connect;
@@ -19,6 +51,51 @@ function get_sections()
         SELECT * 
         FROM section
         ORDER BY id desc
+    ";
+    return mysqli_query($connect, $query);
+}
+
+function add_section($data)
+{
+    global $connect;
+    $query = "
+        INSERT INTO section 
+        VALUES (null, '{$data["title"]}', '{$data["slug"]}', '{$data["sort_order"]}', '{$data["is_active"]}')
+    ";
+    return mysqli_query($connect, $query);
+}
+
+function update_section($data, $id)
+{
+    global $connect;
+    $query = "
+        UPDATE section SET
+            title = '{$data["title"]}', 
+            slug = '{$data["slug"]}', 
+            sort_order = '{$data["sort_order"]}', 
+            is_active = '{$data["is_active"]}'
+        WHERE id = $id
+    ";
+    return mysqli_query($connect, $query);
+}
+
+function delete_section($id)
+{
+    global $connect;
+    $query = "
+        DELETE FROM section
+        WHERE id = $id
+    ";
+    return mysqli_query($connect, $query);
+}
+
+function load_section($id)
+{
+    global $connect;
+    $query = "
+        SELECT * 
+        FROM section
+        WHERE id = $id
     ";
     return mysqli_query($connect, $query);
 }
@@ -49,7 +126,7 @@ function stripUnicode($string)
     return $string;
 }
 
-function changeTitle($str)
+function renderSlug($str)
 {
     $str = trim($str);
     if ($str == '') return '';
@@ -62,4 +139,4 @@ function changeTitle($str)
     $str = mb_convert_case($str, MB_CASE_LOWER, 'utf-8');
     return $str;
 }
-// echo changeTitle('Lưu Đức Nam TP HCM phân bổ 44.000 liều vaccine Sinopharm cho quận huyện');
+// echo renderSlug('Lưu Đức Nam TP HCM phân bổ 44.000 liều vaccine Sinopharm cho quận huyện');
