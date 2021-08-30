@@ -1,6 +1,8 @@
 .ddsmoothmenu{
 width: 100%;
 display: none;
+  position: relative;
+  z-index: 100;
 }
 
 .ddsmoothmenu ul{
