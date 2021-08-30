@@ -44,6 +44,41 @@ function prepare_section_data()
     ];
 }
 
+function validate_category_form()
+{
+    $errors = [];
+    if (!$_POST['title']) {
+        $errors[] = 'Title is required';
+    }
+    return $errors;
+}
+
+function prepare_category_data()
+{
+    $sortOrder = (int)$_POST['sort_order'];
+    if (!$sortOrder) {
+        $sortOrder = 0;
+    }
+
+    $active = (int)$_POST['is_active'];
+    if (!$active && $active != 0) {
+        $active = 1;
+    }
+
+    $title = $_POST['title'];
+    $slug = renderSlug($title);
+
+    $sectionId = (int)$_POST['section_id'];
+
+    return [
+        'title' => $title,
+        'slug' => $slug,
+        'sort_order' => $sortOrder,
+        'is_active' => $active,
+        'section_id' => $sectionId
+    ];
+}
+
 function get_sections()
 {
     global $connect;
@@ -95,6 +130,64 @@ function load_section($id)
     $query = "
         SELECT * 
         FROM section
+        WHERE id = $id
+    ";
+    return mysqli_query($connect, $query);
+}
+
+function get_categories()
+{
+    global $connect;
+    $query = "
+        SELECT c.*, s.title section_name
+        FROM category c
+        LEFT JOIN section s ON s.id = c.section_id
+        ORDER BY c.id desc
+    ";
+    return mysqli_query($connect, $query);
+}
+
+function load_category($id)
+{
+    global $connect;
+    $query = "
+        SELECT * 
+        FROM category
+        WHERE id = $id
+    ";
+    return mysqli_query($connect, $query);
+}
+
+function add_category($data)
+{
+    global $connect;
+    $query = "
+        INSERT INTO category 
+        VALUES (null, '{$data["title"]}', '{$data["slug"]}', '{$data["sort_order"]}', '{$data["is_active"]}', '{$data["section_id"]}')
+    ";
+    return mysqli_query($connect, $query);
+}
+
+function update_category($data, $id)
+{
+    global $connect;
+    $query = "
+        UPDATE category SET
+            title = '{$data["title"]}', 
+            slug = '{$data["slug"]}', 
+            sort_order = '{$data["sort_order"]}', 
+            is_active = '{$data["is_active"]}',
+            section_id = '{$data["section_id"]}'
+        WHERE id = $id
+    ";
+    return mysqli_query($connect, $query);
+}
+
+function delete_category($id)
+{
+    global $connect;
+    $query = "
+        DELETE FROM category
         WHERE id = $id
     ";
     return mysqli_query($connect, $query);
