@@ -23,7 +23,7 @@ if (isset($_POST['btnAdd'])) {
     <?php endif ?>
     <table>
         <tr>
-            <td>Section</td>
+            <td width="200">Section</td>
             <td>
                 <select name="section_id" id="section_id">
                     <option value="0">Please select ...</option>
@@ -46,6 +46,27 @@ if (isset($_POST['btnAdd'])) {
         <tr>
             <td>Title</td>
             <td><input type="text" name="title"></td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td><textarea name="description" cols="100" rows="10"></textarea></td>
+        </tr>
+        <tr>
+            <td>Image</td>
+            <td><input type="text" name="image"></td>
+        </tr>
+        <tr>
+            <td>Content</td>
+            <td><textarea name="content" cols="100" rows="10"></textarea></td>
+        </tr>
+        <tr>
+            <td>Feature</td>
+            <td>
+                <select name="is_feature">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </td>
         </tr>
         <tr>
             <td>Active</td>
