@@ -36,7 +36,7 @@ admin_handle();
             <a href="./">Home</a>
             <a href="./section-list.php">Section</a>
             <a href="./category-list.php">Category</a>
-            <a href="./post.php-list">Post</a>
+            <a href="./post-list.php">Post</a>
             <a href="./banner-list.php">Banner</a>
         </td>
     </tr>

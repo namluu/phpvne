@@ -193,6 +193,29 @@ function delete_category($id)
     return mysqli_query($connect, $query);
 }
 
+function get_categories_by_section($section_id)
+{
+    global $connect;
+    $query = "
+        SELECT * FROM category
+        WHERE section_id = $section_id
+    ";
+    return mysqli_query($connect, $query);
+}
+
+function get_posts()
+{
+    global $connect;
+    $query = "
+        SELECT p.*, c.title category_name, s.title section_name
+        FROM post p
+        LEFT JOIN category c ON c.id = p.category_id
+        LEFT JOIN section s ON s.id = p.section_id
+        ORDER BY p.id desc
+    ";
+    return mysqli_query($connect, $query);
+}
+
 function stripUnicode($string)
 {
     if (!$string) return false;
