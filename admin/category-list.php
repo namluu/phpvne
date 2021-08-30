@@ -24,7 +24,7 @@
         <td>{section_name}</td>
         <td>{sort_order}</td>
         <td>{is_active}</td>
-        <td><a href="category-edit.php?id={id}">Edit</a> | <a href="category-delete.php?id={id}">Delete</a></td>
+        <td><a href="category-edit.php?id={id}">Edit</a> | <a href="category-delete.php?id={id}" onclick="return !!confirm('Delete this item?');">Delete</a></td>
     </tr>
     <?php
         $s = ob_get_clean();
