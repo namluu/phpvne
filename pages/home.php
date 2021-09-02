@@ -27,7 +27,7 @@ $postShowed = []; // we make sure only show a post one time
                 <div class="thumb-art">
                     <a href="" class="" title="">
                     <picture>
-                        <img alt="" class="g" src="upload/<?= $row['image'] ?>">
+                        <img alt="" class="g" src="<?= $row['image'] ?>">
                     </picture> </a>
                 </div>
                 <p class="description"><a href=""><?= $row['description'] ?></a></p>
@@ -62,7 +62,7 @@ $postShowed = []; // we make sure only show a post one time
                         <div class="thumb-art">
                             <a href="" title="<?= $first['title'] ?>">
                                 <picture>
-                                    <img alt="<?= $first['title'] ?>" src="upload/<?= $first['image'] ?>">
+                                    <img alt="<?= $first['title'] ?>" src="<?= $first['image'] ?>">
                                 </picture>
                             </a>
                         </div>

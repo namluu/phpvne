@@ -79,6 +79,66 @@ function prepare_category_data()
     ];
 }
 
+function validate_post_form()
+{
+    $errors = [];
+    if (!$_POST['section_id']) {
+        $errors[] = 'Section is required';
+    }
+    if (!$_POST['title']) {
+        $errors[] = 'Title is required';
+    }
+    if (!$_POST['description']) {
+        $errors[] = 'Description is required';
+    }
+    return $errors;
+}
+
+function prepare_post_data()
+{
+    $sectionId = (int)$_POST['section_id'];
+    $catId = (int)$_POST['category_id'];
+    if (!$catId) {
+        $catId = NULL;
+    }
+
+    $viewCount = (int)$_POST['view_count'];
+    if (!$viewCount) {
+        $viewCount = 0;
+    }
+
+    $feature = (int)$_POST['is_feature'];
+    if (!$feature) {
+        $feature = 0;
+    }
+
+    $active = (int)$_POST['is_active'];
+    if (!$active && $active != 0) {
+        $active = 1;
+    }
+
+    $title = $_POST['title'];
+    $slug = renderSlug($title);
+    $desc = $_POST['description'];
+    $content = $_POST['content'];
+    $image = $_POST['image'];
+    $userId = $_SESSION['userId'];
+
+    return [
+        'title' => $title,
+        'slug' => $slug,
+        'description' => $desc,
+        'content' => $content,
+        'image' => $image,
+        'user_id' => $userId,
+        'section_id' => $sectionId,
+        'category_id' => $catId,
+        'view_count' => $viewCount,
+        'is_feature' => $feature,
+        'is_active' => $active
+    ];
+}
+
 function get_sections()
 {
     global $connect;
@@ -213,6 +273,17 @@ function get_posts()
         LEFT JOIN section s ON s.id = p.section_id
         ORDER BY p.id desc
     ";
+    return mysqli_query($connect, $query);
+}
+
+function add_post($data)
+{
+    global $connect;
+    $columns = implode(", ",array_keys($data));
+    //$escaped_values = array_map('mysqli_real_escape_string', array_values($data));
+    $escaped_values = array_values($data);
+    $values  = implode("', '", $escaped_values);
+    $query = "INSERT INTO `post`($columns) VALUES ('$values')";
     return mysqli_query($connect, $query);
 }
 

@@ -8,7 +8,7 @@
     ?>
     <div class="thumb-art">
         <a href="<?= $link ?>" class="thumb thumb-5x3" title="<?= $row['title'] ?>">
-            <img alt="<?= $row['title'] ?>" src="upload/<?= $row['image'] ?>">
+            <img alt="<?= $row['title'] ?>" src="<?= $row['image'] ?>">
         </a>
     </div>
     <h3 class="title-news"><a href="<?= $link ?>"><?= $row['title'] ?></a></h3>

@@ -23,7 +23,7 @@
     <tr>
         <td>{id}</td>
         <td><strong>{title}</strong><br><br><small>{description}</small></td>
-        <td><img src="../upload/{image}" alt="" width="150"></td>
+        <td><img src="..{image}" alt="" width="150"></td>
         <td>{category_name}</td>
         <td>{section_name}</td>
         <td>{created}</td>

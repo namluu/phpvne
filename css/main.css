@@ -99,6 +99,9 @@ a {
     margin: 0 20px 0 0;
     float: left;
 }
+.article-topstory .thumb-art img {
+    width: 100%;
+}
 .section_topstory .title-news {
     width: auto;
     float: none;

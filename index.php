@@ -26,7 +26,7 @@ user_handle();
 <body>
     <header class="top-header">
         <div class="container">
-            <h1 class="logo"><a href=""><img src="images/logo.svg" alt="VnExpress - Bao tieng Viet nhieu nguoi xem nhat"></a></h1>
+            <h1 class="logo"><a href="./"><img src="images/logo.svg" alt="VnExpress - Bao tieng Viet nhieu nguoi xem nhat"></a></h1>
             <div class="right">
                 <?php
                 if (isset($_SESSION['userId']))
