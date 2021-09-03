@@ -287,6 +287,42 @@ function add_post($data)
     return mysqli_query($connect, $query);
 }
 
+function load_post($id)
+{
+    global $connect;
+    $query = "
+        SELECT * 
+        FROM post
+        WHERE id = $id
+    ";
+    return mysqli_query($connect, $query);
+}
+
+function update_post($data, $id)
+{
+    global $connect;
+    $sets = [];
+    foreach ($data as $key => $val) {
+        $sets[] = "$key = '{$val}'";
+    }
+    $set = implode(',', $sets);
+    $query = "
+        UPDATE post SET $set
+        WHERE id = $id
+    ";
+    return mysqli_query($connect, $query);
+}
+
+function delete_post($id)
+{
+    global $connect;
+    $query = "
+        DELETE FROM post
+        WHERE id = $id
+    ";
+    return mysqli_query($connect, $query);
+}
+
 function stripUnicode($string)
 {
     if (!$string) return false;
