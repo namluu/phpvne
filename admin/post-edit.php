@@ -117,6 +117,10 @@ $(document).ready(function() {
             $("#category_id").html(data);
         });
     });
+    var id = $("#section_id").val()
+    $.get("./post-load-category.php", {section_id: id}, function(data) {
+        $("#category_id").html(data);
+    });
 });
 </script>
     <script type="text/javascript">

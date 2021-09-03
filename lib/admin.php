@@ -117,10 +117,10 @@ function prepare_post_data()
         $active = 1;
     }
 
-    $title = $_POST['title'];
+    $title = str_replace("'", "`", $_POST['title']);
     $slug = renderSlug($title);
-    $desc = $_POST['description'];
-    $content = $_POST['content'];
+    $desc = str_replace("'", "`", $_POST['description']);
+    $content = str_replace("'", "`", $_POST['content']);
     $image = $_POST['image'];
     $userId = $_SESSION['userId'];
 
