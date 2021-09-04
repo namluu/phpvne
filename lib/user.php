@@ -2,6 +2,8 @@
 function get_user($username, $password)
 {
     global $connect;
+    $username = mysqli_real_escape_string($connect, $username);
+    $password = mysqli_real_escape_string($connect, $password);
     $query = "
         SELECT * FROM user
         WHERE username = '$username'
