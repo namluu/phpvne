@@ -3,7 +3,7 @@
     $post = get_latest_post_one();
     $row = mysqli_fetch_array($post);
     if ($row): 
-        $link = 'index.php?p=post&id='.$row['id'];
+        $link = $row['slug'].'-'.$row['id'].'.html';
         $postShowed[] = $row['id'];
     ?>
     <div class="thumb-art">
@@ -16,12 +16,13 @@
     <p class="meta-news"><a href=""><?= $row['section_title'] ?></a></p>
     <?php endif; ?>
 </article>
+
 <div class="sub-news-top">
     <ul class="list-sub-feature">
         <?php
         $posts = get_latest_post_three();
-        while ($row = mysqli_fetch_array($posts)) : 
-            $link = 'index.php?p=post&id='.$row['id'];
+        while ($row = mysqli_fetch_array($posts)) :
+            $link = $row['slug'].'-'.$row['id'].'.html';
             $postShowed[] = $row['id'];
         ?>
         <li>

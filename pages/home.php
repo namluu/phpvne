@@ -18,8 +18,8 @@ $postShowed = []; // we make sure only show a post one time
         <div class="col-sub">
             <?php
             $posts = get_most_view_posts();
-            while ($row = mysqli_fetch_array($posts)) : 
-                $link = 'index.php?p=post&id='.$row['id'];
+            while ($row = mysqli_fetch_array($posts)) :
+                $link = $row['slug'].'-'.$row['id'].'.html';
                 $postShowed[] = $row['id'];
             ?>
             <article class="item-news item-news-common">
@@ -55,8 +55,8 @@ $postShowed = []; // we make sure only show a post one time
                     <?php 
                     $post = get_latest_post_by_section($row['id']);
                     $first = mysqli_fetch_array($post);
-                    if ($first): 
-                        $link = 'index.php?p=post&id='.$first['id'];
+                    if ($first):
+                        $link = $first['slug'].'-'.$first['id'].'.html';
                     ?>
                     <article class="item-news full-thumb flexbox">
                         <div class="thumb-art">
@@ -85,8 +85,8 @@ $postShowed = []; // we make sure only show a post one time
                     <?php 
                     $post = get_second_post_by_section($row['id']);
                     $second = mysqli_fetch_array($post);
-                    if ($second): 
-                        $link = 'index.php?p=post&id='.$second['id'];
+                    if ($second):
+                        $link = $second['slug'].'-'.$second['id'].'.html';
                     ?>
                     <article class="article-sub-right">
                         <h3 class="title-news"><a href="<?= $link ?>"><?= $second['title'] ?></a></h3>
@@ -106,8 +106,8 @@ $postShowed = []; // we make sure only show a post one time
                     <div class="sub-news-cate flexbox">
                     <?php
                         $posts = get_three_post_by_section($row['id']);
-                        while ($row = mysqli_fetch_array($posts)) : 
-                            $link = 'index.php?p=post&id='.$row['id'];
+                        while ($row = mysqli_fetch_array($posts)) :
+                            $link = $row['slug'].'-'.$row['id'].'.html';
                         ?>
                         <article class="item-news">
                             <h3 class="title-news"><a href="<?= $link ?>" title="<?= $row['title'] ?>"><?= $row['title'] ?></a></h3>

@@ -354,7 +354,7 @@ function renderSlug($str)
     $str = trim($str);
     if ($str == '') return '';
     $str = str_replace(array('(',')','-','=',',','.','/','#','?','+','!','@','$','%','^','&','*',':',"\t","\r","\n","　"), " ", $str);
-    $str = str_replace(array("'", "’"), '', $str);
+    $str = str_replace(array("'", "’", "`"), '', $str);
     $str = preg_replace('/[\s]{2,}/', ' ', $str);
     $str = preg_replace('/[\s]$/', '', $str);
     $str = str_replace(' ', '-', $str);
