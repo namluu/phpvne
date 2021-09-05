@@ -122,3 +122,46 @@ function load_post($id)
     ";
     return mysqli_query($connect, $query);
 }
+
+function load_section($id)
+{
+    global $connect;
+    $query = "
+        SELECT * 
+        FROM section
+        WHERE id = $id
+    ";
+    return mysqli_query($connect, $query);
+}
+function load_post_by_section($id)
+{
+    global $connect;
+    $query = "
+        SELECT p.*
+        FROM post p
+        WHERE p.section_id = $id
+        ORDER BY id desc
+    ";
+    return mysqli_query($connect, $query);
+}
+function load_category($id)
+{
+    global $connect;
+    $query = "
+        SELECT * 
+        FROM category
+        WHERE id = $id
+    ";
+    return mysqli_query($connect, $query);
+}
+function load_post_by_category($id)
+{
+    global $connect;
+    $query = "
+        SELECT p.*
+        FROM post p
+        WHERE p.category_id = $id
+        ORDER BY id desc
+    ";
+    return mysqli_query($connect, $query);
+}

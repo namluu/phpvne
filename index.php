@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('lib/db_connection.php');
-require_once('lib/home.php');
+require_once('lib/frontend.php');
 require_once('lib/user.php');
 
 if (isset($_GET['p'])) {

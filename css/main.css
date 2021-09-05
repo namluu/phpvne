@@ -505,3 +505,33 @@ a {
     font-weight: 400;
     margin-bottom: 15px;
 }
+
+/********************** LIST ***********************/
+.section_page-list .col-main {
+    padding-left: 0;
+    padding-right: 20px;
+}
+.section_page-list .col-sub {
+    padding-left: 20px;
+    padding-right: 0;
+}
+.section_page-list .col-sub:after {
+    content: none;
+}
+.section_page-list .box-category {
+    height: 32px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.section_page-list .parent-cate {
+    margin-right: 20px;
+}
+.section_page-list .title_news {
+    font-size: 20px;
+    font-weight: 400;
+}
+.section_page-list .thumb-art {
+    width: 220px;
+    margin-right: 0;
+    margin-left: 40px;
+    float: right;
+}
