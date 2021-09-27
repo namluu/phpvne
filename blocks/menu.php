@@ -13,14 +13,16 @@
         <?php
         $sections = get_sections();
         while ($row = mysqli_fetch_array($sections)) : 
-            $link = 'index.php?p=section&id='.$row['id'];
+            #$link = 'index.php?p=section&id='.$row['id'];
+            $link = 'the-loai/'.$row['slug'].'-'.$row['id'].'.html';
         ?>
         <li><a href="<?= $link ?>"><?= $row['title'] ?></a>
             <ul>
                 <?php
                 $categories = get_categories_by_section($row['id']);
                 while ($cat = mysqli_fetch_array($categories)) : 
-                    $link = 'index.php?p=category&id='.$cat['id'];
+                    #$link = 'index.php?p=category&id='.$cat['id'];
+                    $link = 'danh-muc/'.$cat['slug'].'-'.$cat['id'].'.html';
                 ?>
                 <li><a href="<?= $link ?>"><?= $cat['title'] ?></a></li>
                 <?php endwhile; ?>

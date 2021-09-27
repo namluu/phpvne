@@ -1,5 +1,8 @@
 RewriteEngine On
 RewriteBase /
 RewriteRule "index.html" "index.php"
-RewriteCond %{REQUEST_URI} !(test\.html|\.jpg)$ [NC]
-RewriteRule "^(.*)-(.*)$" "index.php?p=post&id=$2&slug=$1"
+#RewriteCond %{REQUEST_URI} !(test\.html|\.jpg|\.png|\.gif)$ [NC]
+RewriteRule "^chi-tiet/(.*)-(.*).html$" "index.php?p=post&id=$2&slug=$1"
+RewriteRule "^the-loai/(.*)-(.*).html$" "index.php?p=section&id=$2&slug=$1"
+RewriteRule "^thoi-su.html$" "index.php?p=section&id=1"
+RewriteRule "^danh-muc/(.*)-(.*).html$" "index.php?p=category&id=$2&slug=$1"

@@ -19,7 +19,7 @@ $postShowed = []; // we make sure only show a post one time
             <?php
             $posts = get_most_view_posts();
             while ($row = mysqli_fetch_array($posts)) :
-                $link = $row['slug'].'-'.$row['id'].'.html';
+                $link = 'chi-tiet/'.$row['slug'].'-'.$row['id'].'.html';
                 $postShowed[] = $row['id'];
             ?>
             <article class="item-news item-news-common">
@@ -38,7 +38,8 @@ $postShowed = []; // we make sure only show a post one time
         <?php
             $sections = get_sections();
             while ($row = mysqli_fetch_array($sections)) : 
-                $link = 'index.php?p=section&id='.$row['id'];
+                #$link = 'index.php?p=section&id='.$row['id'];
+                $link = 'the-loai/'.$row['slug'].'-'.$row['id'].'.html';
             ?>
             <div class="box-category">
                 <hgroup class="title-box-category">
@@ -46,7 +47,8 @@ $postShowed = []; // we make sure only show a post one time
                     <?php
                     $categories = get_categories_by_section($row['id']);
                     while ($cat = mysqli_fetch_array($categories)) : 
-                        $link = 'index.php?p=category&id='.$cat['id'];
+                        #$link = 'index.php?p=category&id='.$cat['id'];
+                        $link = 'danh-muc/'.$cat['slug'].'-'.$cat['id'].'.html';
                     ?>
                     <span class="sub-cate"><a href="<?= $link ?>"><?= $cat['title'] ?></a></span>
                     <?php endwhile; ?>
@@ -56,7 +58,7 @@ $postShowed = []; // we make sure only show a post one time
                     $post = get_latest_post_by_section($row['id']);
                     $first = mysqli_fetch_array($post);
                     if ($first):
-                        $link = $first['slug'].'-'.$first['id'].'.html';
+                        $link = 'chi-tiet/'.$first['slug'].'-'.$first['id'].'.html';
                     ?>
                     <article class="item-news full-thumb flexbox">
                         <div class="thumb-art">
@@ -86,7 +88,7 @@ $postShowed = []; // we make sure only show a post one time
                     $post = get_second_post_by_section($row['id']);
                     $second = mysqli_fetch_array($post);
                     if ($second):
-                        $link = $second['slug'].'-'.$second['id'].'.html';
+                        $link = 'chi-tiet/'.$second['slug'].'-'.$second['id'].'.html';
                     ?>
                     <article class="article-sub-right">
                         <h3 class="title-news"><a href="<?= $link ?>"><?= $second['title'] ?></a></h3>
@@ -107,7 +109,7 @@ $postShowed = []; // we make sure only show a post one time
                     <?php
                         $posts = get_three_post_by_section($row['id']);
                         while ($row = mysqli_fetch_array($posts)) :
-                            $link = $row['slug'].'-'.$row['id'].'.html';
+                            $link = 'chi-tiet/'.$row['slug'].'-'.$row['id'].'.html';
                         ?>
                         <article class="item-news">
                             <h3 class="title-news"><a href="<?= $link ?>" title="<?= $row['title'] ?>"><?= $row['title'] ?></a></h3>

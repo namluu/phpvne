@@ -3,7 +3,7 @@
     $post = get_latest_post_one();
     $row = mysqli_fetch_array($post);
     if ($row): 
-        $link = $row['slug'].'-'.$row['id'].'.html';
+        $link = 'chi-tiet/'.$row['slug'].'-'.$row['id'].'.html';
         $postShowed[] = $row['id'];
     ?>
     <div class="thumb-art">
@@ -22,7 +22,7 @@
         <?php
         $posts = get_latest_post_three();
         while ($row = mysqli_fetch_array($posts)) :
-            $link = $row['slug'].'-'.$row['id'].'.html';
+            $link = 'chi-tiet/'.$row['slug'].'-'.$row['id'].'.html';
             $postShowed[] = $row['id'];
         ?>
         <li>
